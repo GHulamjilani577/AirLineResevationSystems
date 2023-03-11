@@ -1,12 +1,14 @@
 package com.example.AirLineResevationSystems.entity;
 
 import jakarta.persistence.*;
+import lombok.Data;
 
 @Entity
+@Data
 @Table(name="reservation")
 public class Reservation {
     @Id
-    @Column(name="id")
+    @Column(name="reservation_id")
     private String id;
     @Column(name="reservation_Number")
     private String reservationNumber;
@@ -22,7 +24,7 @@ public class Reservation {
     private String reservationPaymentMode;
     @Column(name="reservation_BillingAddress")
     private String reservationBillingAddress;
-    @JoinColumn(name="user_id")
-    @OneToOne
-    private User user;
+    @ManyToOne
+    private AirLineFlight airLineFlight;
+
 }

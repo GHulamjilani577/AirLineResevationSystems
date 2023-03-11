@@ -1,23 +1,25 @@
 package com.example.AirLineResevationSystems.entity;
 
 import jakarta.persistence.*;
+import lombok.Data;
 
 import java.util.List;
 
 @Entity
+@Data
 @Table(name="user")
 public class User {
     @Id
-    @Column(name="id")
+    @Column(name="user_id")
     private String id;
     @Column(name="passenger_Name")
     private String passengerName;
     @Column(name="priority_Boarding")
     private String priorityBoarding;
 
-    @OneToMany
-   @JoinColumn(name = "user_id")
-     List<Reservation> reservations;
+    @ManyToOne
+    private FlightSchedule flightSchedule;
+
 
 
 }

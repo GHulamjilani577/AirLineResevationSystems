@@ -1,11 +1,12 @@
 package com.example.AirLineResevationSystems.entity;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
+import lombok.Data;
+
+import java.util.List;
 
 @Entity
+@Data
 @Table(name="flightSchedule")
 public class FlightSchedule {
     @Id
@@ -17,5 +18,11 @@ public class FlightSchedule {
     private String flightPrice;
     @Column(name="flight_getFlight")
     private String flightGetFlight;
+    @OneToMany
+    @JoinColumn(name = "user_id")
+    private List<User> user;
+    @OneToMany
+    @JoinColumn(name = "reservation_id")
+    private List<Reservation>reservation ;
 
 }
