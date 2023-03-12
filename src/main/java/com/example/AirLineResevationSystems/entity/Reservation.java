@@ -9,7 +9,7 @@ import lombok.Data;
 public class Reservation {
     @Id
     @Column(name="reservation_id")
-    private String id;
+    private int id;
     @Column(name="reservation_Number")
     private String reservationNumber;
     @Column(name="reservation_Price")

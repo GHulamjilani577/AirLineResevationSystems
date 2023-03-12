@@ -10,8 +10,9 @@ import java.util.List;
 @Table(name="airline")
 public class Airline {
     @Id
-    @Column(name="air_Line_Id")
-    private String airLineId;
+    @GeneratedValue(strategy =GenerationType.AUTO)
+    @Column(name="air_line_Id")
+    private int airLineId;
     @Column(name="airline_flight")
     private String flight;
     @Column(name="airline_capacity")
@@ -22,11 +23,15 @@ public class Airline {
     private String phonenumer;
     @Column(name="airline_ price")
     private String price;
-    @OneToMany
-    @JoinColumn(name = "airLine_flight_Id")
-    private List<AirLineFlight> airLineFlights;
-    @ManyToOne
-    private Airport airport;
+/*   @OneToMany
+ @JoinColumn(name = "airLine_flight_Id")
+  private List<AirLineFlight> airLineFlights;*/
+@ManyToOne
+private Airport airport;
+   @OneToMany
+   @JoinColumn(name = "airLine_flight_Id")
+    private List<AirLineFlight>airLineFlights;
+
 
 
 }

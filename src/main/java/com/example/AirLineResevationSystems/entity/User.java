@@ -11,7 +11,7 @@ import java.util.List;
 public class User {
     @Id
     @Column(name="user_id")
-    private String id;
+    private int id;
     @Column(name="passenger_Name")
     private String passengerName;
     @Column(name="priority_Boarding")

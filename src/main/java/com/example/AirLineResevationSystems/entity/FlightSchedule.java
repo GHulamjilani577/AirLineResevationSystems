@@ -11,7 +11,7 @@ import java.util.List;
 public class FlightSchedule {
     @Id
     @Column(name="flightSchedule_Id")
-    private String flightScheduleId;
+    private int flightScheduleId;
     @Column(name="flight_Available")
     private String flightAvailable;
     @Column(name="flight_getPrice")

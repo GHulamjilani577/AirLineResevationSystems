@@ -9,11 +9,14 @@ import java.util.List;
 @Table(name="airline_flight")
 public class AirLineFlight {
     @Id
+    @GeneratedValue(strategy =GenerationType.AUTO)
     @Column(name="airLine_flight_Id")
-    private String airLineId;
+    private int airLineFlightId;
     @OneToMany
     @JoinColumn(name = "reservation_id")
     private List<Reservation> reservation;
+    @ManyToOne
+   private Airline airlines;
 
 
 
