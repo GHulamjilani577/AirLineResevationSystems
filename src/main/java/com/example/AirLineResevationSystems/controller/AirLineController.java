@@ -12,8 +12,8 @@ import org.springframework.web.bind.annotation.RestController;
 public class AirLineController {
     @Autowired
     public AirLineServices airLineServices;
-    @PostMapping("/Airport")
-    public Airline AddAirline(@RequestBody Airline airline){
+    @PostMapping("/add-airline")
+    public Airline addAirline(@RequestBody Airline airline){
         return airLineServices.insert(airline);
     }
 }

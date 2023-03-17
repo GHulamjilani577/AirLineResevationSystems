@@ -18,6 +18,7 @@ public class User {
     private String priorityBoarding;
 
     @ManyToOne
+    @JoinColumn(name = "flightSchedule_Id")
     private FlightSchedule flightSchedule;
 
 

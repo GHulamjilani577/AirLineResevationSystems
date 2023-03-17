@@ -19,10 +19,8 @@ public class FlightSchedule {
     @Column(name="flight_getFlight")
     private String flightGetFlight;
     @OneToMany
-    @JoinColumn(name = "user_id")
     private List<User> user;
     @OneToMany
-    @JoinColumn(name = "reservation_id")
     private List<Reservation>reservation ;
 
 }

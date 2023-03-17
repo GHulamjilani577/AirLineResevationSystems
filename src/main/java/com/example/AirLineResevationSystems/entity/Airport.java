@@ -12,7 +12,7 @@ import java.util.List;
 public class Airport {
 
     @Id
-    @GeneratedValue(strategy =GenerationType.AUTO)
+    @GeneratedValue(strategy =GenerationType.IDENTITY)
     @Column(name="airport_Id")
     private int airPortId;
     @Column(name="airPort_Name")
@@ -24,7 +24,6 @@ public class Airport {
     private List<Airline> airline;*/
 
     @OneToMany
-    @JoinColumn(name = "air_line_Id")
     private List<Airline>airlines;
 
 
