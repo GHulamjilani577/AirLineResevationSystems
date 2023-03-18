@@ -12,6 +12,7 @@ public class AirLineFlight {
     @GeneratedValue(strategy =GenerationType.IDENTITY)
     @Column(name="airLine_flight_Id")
     private int airLineFlightId;
+
     @OneToMany
     private List<Reservation> reservation;
     @ManyToOne

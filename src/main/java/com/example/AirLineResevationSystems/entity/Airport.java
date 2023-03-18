@@ -14,7 +14,7 @@ public class Airport {
     @Id
     @GeneratedValue(strategy =GenerationType.IDENTITY)
     @Column(name="airport_Id")
-    private int airPortId;
+    private Long airPortId;
     @Column(name="airPort_Name")
     private String airportname;
     @Column(name="airPort_Location")

@@ -13,13 +13,12 @@ public class Airline {
     @Id
     @GeneratedValue(strategy =GenerationType.IDENTITY)
     @Column(name="air_line_Id")
-    private int airLineId;
+    private Long airLineId;
     @Column(name="airline_flight")
     private String flight;
     @Column(name="airline_capacity")
     private String capacity;
     @Column(name="airline_passangers")
-    @JsonProperty("airline_passangers")
     private String passangers;
     @Column(name="airline_phoneNumber")
     private String phoneNumber;
