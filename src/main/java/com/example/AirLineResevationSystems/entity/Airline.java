@@ -1,6 +1,5 @@
 package com.example.AirLineResevationSystems.entity;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
 import lombok.Data;
 
@@ -14,12 +13,12 @@ public class Airline {
     @GeneratedValue(strategy =GenerationType.IDENTITY)
     @Column(name="air_line_Id")
     private Long airLineId;
-    @Column(name="airline_flight")
+    @Column(name="airline_Name")
     private String flight;
-    @Column(name="airline_capacity")
-    private String capacity;
-    @Column(name="airline_passangers")
-    private String passangers;
+    @Column(name="businessClass_capacity")
+    private String businessCapacity;
+    @Column(name="economyClass_capacity")
+    private String economyCapacity;
     @Column(name="airline_phoneNumber")
     private String phoneNumber;
     @Column(name="airline_ price")

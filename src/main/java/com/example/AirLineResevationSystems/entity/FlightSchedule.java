@@ -10,14 +10,21 @@ import java.util.List;
 @Table(name="flightSchedule")
 public class FlightSchedule {
     @Id
+    @GeneratedValue(strategy =GenerationType.IDENTITY)
     @Column(name="flightSchedule_Id")
-    private int flightScheduleId;
-    @Column(name="flight_Available")
-    private String flightAvailable;
-    @Column(name="flight_getPrice")
-    private String flightPrice;
-    @Column(name="flight_getFlight")
-    private String flightGetFlight;
+    private Long flightScheduleId;
+    @Column(name="flight_Code")
+    private String flightCode;
+    @Column(name="destination")
+    private String destination;
+    @Column(name="flight_status ")
+    private String flightStatus;
+    @Column(name="flight_Type")
+    private String flightType;
+    @Column(name="departure")
+    private String departure;
+    @Column(name="time")
+    private String time;
     @OneToMany
     private List<User> user;
     @OneToMany

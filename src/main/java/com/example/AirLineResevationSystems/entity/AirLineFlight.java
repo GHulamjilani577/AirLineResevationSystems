@@ -11,7 +11,12 @@ public class AirLineFlight {
     @Id
     @GeneratedValue(strategy =GenerationType.IDENTITY)
     @Column(name="airLine_flight_Id")
-    private int airLineFlightId;
+    private Long airLineFlightId;
+    @Column(name="flight_Code")
+    private String flightCode;
+    @Column(name="flight_Type")
+    private String flightType;
+
 
     @OneToMany
     private List<Reservation> reservation;
@@ -23,4 +28,7 @@ public class AirLineFlight {
 
 
 
+
+   /* public AirLineFlight(List<AirLineFlight> airLineFlights) {
+    }*/
 }
