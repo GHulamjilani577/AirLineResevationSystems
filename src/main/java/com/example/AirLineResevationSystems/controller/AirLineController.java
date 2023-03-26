@@ -1,4 +1,4 @@
-package com.example.AirLineResevationSystems.controller;
+/*package com.example.AirLineResevationSystems.controller;
 
 import com.example.AirLineResevationSystems.model.AirlineModel;
 import com.example.AirLineResevationSystems.service.AirLineService;
@@ -15,4 +15,4 @@ public class AirLineController {
     public AirlineModel addAirline(@RequestBody AirlineModel airlineModel){
         return airLineServices.insert(airlineModel);
     }
-}
+}*/

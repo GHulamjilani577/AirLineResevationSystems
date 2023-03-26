@@ -1,7 +1,7 @@
 package com.example.AirLineResevationSystems.model;
 
 
-import com.example.AirLineResevationSystems.entity.Airline;
+
 import com.example.AirLineResevationSystems.entity.Airport;
 import lombok.Data;
 
@@ -10,11 +10,14 @@ import java.util.List;
 @Data
 public class AirportModel {
     private Long airPortId;
-
     private String airportname;
-
     private String location;
-    private Airline airline;
+
+    public AirportModel(Airport save) {
+    }
+
+
+    // private Airline airline;
 
   /*  public AirportModel(Long airPortId, String airportname, String location, Airline airline) {
         this.airPortId = airPortId;
@@ -43,7 +46,7 @@ public class AirportModel {
         return airport;
     }
     public AirportModel assemble(Airport airport){
-        AirportModel airportModel=new AirportModel();
+        AirportModel airportModel=new AirportModel(airport);
         airportModel.setAirPortId(airport.getAirPortId());
         airportModel.setAirportname(airport.getAirportname());
         airportModel.setLocation(airport.getLocation());

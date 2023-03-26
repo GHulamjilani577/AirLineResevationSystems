@@ -1,8 +1,5 @@
 package com.example.AirLineResevationSystems.controller;
-
-import com.example.AirLineResevationSystems.model.AirlineModel;
 import com.example.AirLineResevationSystems.model.UserModel;
-import com.example.AirLineResevationSystems.service.AirLineService;
 import com.example.AirLineResevationSystems.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;

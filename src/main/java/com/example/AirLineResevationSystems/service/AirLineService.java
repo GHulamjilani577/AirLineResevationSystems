@@ -1,3 +1,4 @@
+/*
 package com.example.AirLineResevationSystems.service;
 
 import com.example.AirLineResevationSystems.model.AirlineModel;
@@ -13,3 +14,4 @@ public class AirLineService {
         return airlineModel.assemble(airLineRepository.save(airlineModel.disassemble()));
     }
 }
+*/

@@ -1,3 +1,4 @@
+/*
 package com.example.AirLineResevationSystems.repository;
 
 import com.example.AirLineResevationSystems.entity.Airline;
@@ -12,3 +13,4 @@ public interface AirLineRepository extends JpaRepository<Airline,Long> {
 }
 
 
+*/

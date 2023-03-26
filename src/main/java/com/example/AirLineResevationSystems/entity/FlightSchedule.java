@@ -27,6 +27,11 @@ public class FlightSchedule {
     private String time;
     @OneToMany
     private List<User> user;
+    @ManyToOne
+    private Airport airport;
+    @ManyToOne
+    private AirLineFlight airLineFlight;
+
     @OneToMany
     private List<Reservation>reservation ;
 

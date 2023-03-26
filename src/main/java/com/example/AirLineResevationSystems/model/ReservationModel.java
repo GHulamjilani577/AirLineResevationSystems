@@ -1,6 +1,5 @@
 package com.example.AirLineResevationSystems.model;
 
-import com.example.AirLineResevationSystems.entity.Airline;
 import com.example.AirLineResevationSystems.entity.Reservation;
 import lombok.Data;
 

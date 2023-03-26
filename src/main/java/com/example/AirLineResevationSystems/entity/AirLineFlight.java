@@ -12,17 +12,25 @@ public class AirLineFlight {
     @GeneratedValue(strategy =GenerationType.IDENTITY)
     @Column(name="airLine_flight_Id")
     private Long airLineFlightId;
-    @Column(name="flight_Code")
-    private String flightCode;
-    @Column(name="flight_Type")
-    private String flightType;
+    @Column(name="airLine_name")
+    private String airlineName;
+    @Column(name="airline_ type")
+    private String type;
+    @Column(name="businessClass_capacity")
+    private String businessCapacity;
+    @Column(name="economyClass_capacity")
+    private String economyCapacity;
+    @Column(name="originAirport")
+    private String originAirport;
+    @Column(name="destinationAirport")
+    private String destinationAirport;
 
 
     @OneToMany
-    private List<Reservation> reservation;
-    @ManyToOne
+    private List<FlightSchedule> flightSchedules;
+   /* @ManyToOne
     @JoinColumn(name = "air_line_Id")
-   private Airline airlines;
+   private Airline airlines;*/
 
 
 

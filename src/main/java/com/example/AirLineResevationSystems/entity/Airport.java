@@ -14,16 +14,16 @@ public class Airport {
     @GeneratedValue(strategy =GenerationType.IDENTITY)
     @Column(name="airport_Id")
     private Long airPortId;
-    @Column(name="airPort_Name")
+    @Column(name="airPort_Name", unique = true)
     private String airportname;
-    @Column(name="airPort_Location")
+    @Column(name="airPort_Location",unique = true)
     private String location;
     /*@OneToMany
     @JoinColumn(name = "air_line_Id")
     private List<Airline> airline;*/
 
     @OneToMany
-    private List<Airline>airlines;
+    private List<FlightSchedule>flightSchedules;
 
 
 
