@@ -23,6 +23,7 @@ public class AirlineFlightController {
         return airLineFlightService.getById(id);
     }
 
+
     @GetMapping
     public List<AirLineFlightModel> getAllAirLineFlights() {
         return airLineFlightService.getAll();

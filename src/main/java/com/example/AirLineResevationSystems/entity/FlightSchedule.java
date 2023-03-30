@@ -1,5 +1,6 @@
 package com.example.AirLineResevationSystems.entity;
 
+import com.example.AirLineResevationSystems.model.FlightScheduleModel;
 import jakarta.persistence.*;
 import lombok.Data;
 
@@ -25,14 +26,13 @@ public class FlightSchedule {
     private String departure;
     @Column(name="time")
     private String time;
-    @ManyToOne
-    private User user;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "airLine_flight_Id")
+    private AirLineFlight airLineFlight;
     @ManyToOne
     private Airport airport;
-    @ManyToOne(fetch =FetchType.LAZY)
-    private AirLineFlight airLineFlight;
-
     @OneToMany
     private List<Reservation>reservation ;
+
 
 }

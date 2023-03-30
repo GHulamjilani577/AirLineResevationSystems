@@ -1,5 +1,6 @@
 package com.example.AirLineResevationSystems.model;
 
+import com.example.AirLineResevationSystems.entity.AirLineFlight;
 import com.example.AirLineResevationSystems.entity.FlightSchedule;
 import lombok.Data;
 
@@ -12,8 +13,41 @@ public class FlightScheduleModel {
     private String flightType;
     private String departure;
     private String time;
+    private Long airLineFlightId;
 
-    public FlightSchedule disassemble(){
+    public Long getAirLineFlightId() {
+        return airLineFlightId;
+    }
+
+    public void setAirLineFlightId(Long airLineFlightId) {
+        this.airLineFlightId = airLineFlightId;
+    }
+    public FlightSchedule disassemble() {
+        FlightSchedule flightSchedule = new FlightSchedule();
+        flightSchedule.setFlightScheduleId(flightScheduleId);
+        flightSchedule.setFlightCode(flightCode);
+        flightSchedule.setDestination(destination);
+        flightSchedule.setFlightStatus(flightStatus);
+        flightSchedule.setFlightType(flightType);
+        flightSchedule.setDeparture(departure);
+        flightSchedule.setTime(time);
+        flightSchedule.setAirLineFlight(new AirLineFlight(airLineFlightId));
+        return flightSchedule;
+    }
+    public static FlightScheduleModel assemble(FlightSchedule flightSchedule) {
+        FlightScheduleModel flightScheduleModel = new FlightScheduleModel();
+        flightScheduleModel.setFlightScheduleId(flightSchedule.getFlightScheduleId());
+        flightScheduleModel.setFlightCode(flightSchedule.getFlightCode());
+        flightScheduleModel.setDestination(flightSchedule.getDestination());
+        flightScheduleModel.setFlightStatus(flightSchedule.getFlightStatus());
+        flightScheduleModel.setFlightType(flightSchedule.getFlightType());
+        flightScheduleModel.setDeparture(flightSchedule.getDeparture());
+        flightScheduleModel.setTime(flightSchedule.getTime());
+        flightScheduleModel.setAirLineFlightId(flightSchedule.getAirLineFlight().getAirLineFlightId());
+        return flightScheduleModel;
+    }
+
+  /*  public FlightSchedule disassemble(){
         FlightSchedule flightSchedule=new FlightSchedule();
         flightSchedule.setFlightScheduleId(flightScheduleId);
         flightSchedule.setFlightCode(flightCode);
@@ -35,6 +69,6 @@ public class FlightScheduleModel {
         flightScheduleModel.setTime(flightSchedule.getTime());
         return flightScheduleModel;
     }
-
+*/
 
 }

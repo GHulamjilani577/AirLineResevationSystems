@@ -24,8 +24,14 @@ public class AirLineFlight {
     private String originAirport;
     @Column(name="destinationAirport")
     private String destinationAirport;
+   /* @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "flightScheduleId", referencedColumnName = "flightScheduleId")*/
+    @OneToOne(mappedBy = "airLineFlight", cascade = CascadeType.ALL, orphanRemoval = true)
+    private FlightSchedule flightSchedule;
 
-
-    @OneToMany(mappedBy = "airLineFlight", cascade = CascadeType.ALL)
-    private List<FlightSchedule> flightSchedules;
+    public AirLineFlight() {
+        // Default constructor
+    }
+    public AirLineFlight(Long airLineFlightId) {
+    }
 }

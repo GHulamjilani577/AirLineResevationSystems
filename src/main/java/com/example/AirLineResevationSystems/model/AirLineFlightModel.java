@@ -3,6 +3,7 @@ package com.example.AirLineResevationSystems.model;
 
 import com.example.AirLineResevationSystems.entity.AirLineFlight;
 import com.example.AirLineResevationSystems.entity.FlightSchedule;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Data;
 
 
@@ -10,6 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Data
+@JsonIgnoreProperties("flightSchedule")
 public class AirLineFlightModel
 {
     private Long airLineFlightId;
@@ -22,7 +24,7 @@ public class AirLineFlightModel
     private List<FlightScheduleModel> flightSchedules;
 
 public AirLineFlight disassemble() {
-    AirLineFlight airLineFlight = new AirLineFlight();
+    AirLineFlight airLineFlight = new AirLineFlight(airLineFlightId);
     airLineFlight.setAirLineFlightId(airLineFlightId);
     airLineFlight.setAirlineName(airlineName);
     airLineFlight.setType(type);
@@ -30,13 +32,7 @@ public AirLineFlight disassemble() {
     airLineFlight.setEconomyCapacity(economyCapacity);
     airLineFlight.setOriginAirport(originAirport);
     airLineFlight.setDestinationAirport(destinationAirport);
-    if (flightSchedules != null) {
-        List<FlightSchedule> schedules = new ArrayList<>();
-        for (FlightScheduleModel schedule : flightSchedules) {
-            schedules.add(schedule.disassemble());
-        }
-        airLineFlight.setFlightSchedules(schedules);
-    }
+
     return airLineFlight;
 }
     public AirLineFlightModel assemble(AirLineFlight airLineFlight){
@@ -48,12 +44,6 @@ public AirLineFlight disassemble() {
         airLineFlightModel.setEconomyCapacity(airLineFlight.getEconomyCapacity());
         airLineFlightModel.setOriginAirport(airLineFlight.getOriginAirport());
         airLineFlightModel.setDestinationAirport(airLineFlight.getDestinationAirport());
-
-        List<FlightScheduleModel> flightScheduleModels = new ArrayList<>();
-        for (FlightSchedule flightSchedule : airLineFlight.getFlightSchedules()) {
-            flightScheduleModels.add(new FlightScheduleModel());
-        }
-        airLineFlightModel.setFlightSchedules(flightScheduleModels);
         return airLineFlightModel;
     }
 
