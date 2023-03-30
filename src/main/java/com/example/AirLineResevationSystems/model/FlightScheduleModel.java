@@ -1,6 +1,5 @@
 package com.example.AirLineResevationSystems.model;
 
-import com.example.AirLineResevationSystems.entity.Airport;
 import com.example.AirLineResevationSystems.entity.FlightSchedule;
 import lombok.Data;
 
@@ -25,7 +24,7 @@ public class FlightScheduleModel {
         flightSchedule.setTime(time);
         return flightSchedule;
     }
-    public FlightScheduleModel assemble(FlightSchedule flightSchedule){
+    public static FlightScheduleModel assemble(FlightSchedule flightSchedule){
         FlightScheduleModel flightScheduleModel=new FlightScheduleModel();
         flightScheduleModel.setFlightScheduleId(flightSchedule.getFlightScheduleId());
         flightScheduleModel.setFlightCode(flightSchedule.getFlightCode());

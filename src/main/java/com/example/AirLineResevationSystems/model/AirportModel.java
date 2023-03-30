@@ -6,6 +6,7 @@ import com.example.AirLineResevationSystems.entity.Airport;
 import lombok.Data;
 
 import java.util.List;
+import java.util.Optional;
 
 @Data
 public class AirportModel {
@@ -16,27 +17,12 @@ public class AirportModel {
     public AirportModel(Airport save) {
     }
 
-
-    // private Airline airline;
-
-  /*  public AirportModel(Long airPortId, String airportname, String location, Airline airline) {
+    public AirportModel(Long airPortId, String airportname, String location) {
         this.airPortId = airPortId;
         this.airportname = airportname;
         this.location = location;
-        this.airline = airline;
-    }
-    public AirportModel(AirportModel airport){
-        this.airPortId=airport.getAirPortId();
-        this.airportname=airport.getAirportname();
-        this.location=airport.getLocation();
-        this.airline=new Airline(airport.getAirlines());
     }
 
-    private List<Airline> getAirlines() {
-        return getAirlines();
-    }
-
-*/
      public Airport disassemble(){
        Airport airport=new Airport();
        airport.setAirPortId(airPortId);

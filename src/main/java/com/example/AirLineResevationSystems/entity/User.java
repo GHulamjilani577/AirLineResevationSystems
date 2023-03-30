@@ -10,17 +10,16 @@ import java.util.List;
 @Table(name="user")
 public class User {
     @Id
-    @Column(name="user_id")
+    @GeneratedValue(strategy =GenerationType.IDENTITY)
+    @Column(name="user_id",nullable = false)
     private Long id;
-    @Column(name="passenger_Name")
-    private String passengerName;
-    @Column(name="priority_Boarding")
-    private String priorityBoarding;
-
-    @ManyToOne
-    @JoinColumn(name = "flightSchedule_Id")
-    private FlightSchedule flightSchedule;
-
-
+    @Column(name="user_Name",nullable = false)
+    private String userName;
+    @Column(name="CNIC_Number",nullable = false)
+    private String CNICNumber;
+    @Column(name="Phone_number",nullable = false)
+    private String phoneNumber;
+    @OneToMany
+    private List<FlightSchedule>flightScheduleList;
 
 }

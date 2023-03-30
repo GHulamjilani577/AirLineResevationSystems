@@ -2,9 +2,11 @@ package com.example.AirLineResevationSystems.model;
 
 
 import com.example.AirLineResevationSystems.entity.AirLineFlight;
+import com.example.AirLineResevationSystems.entity.FlightSchedule;
 import lombok.Data;
 
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Data
@@ -17,29 +19,26 @@ public class AirLineFlightModel
     private String economyCapacity;
     private String originAirport;
     private String destinationAirport;
+    private List<FlightScheduleModel> flightSchedules;
 
-    /*public AirLineFlightModel(Long airLineFlightId, String airLineName, Airline airline) {
-        this.airLineFlightId = airLineFlightId;
-        this.airLineName = airLineName;
-        this.airline = airline;
+public AirLineFlight disassemble() {
+    AirLineFlight airLineFlight = new AirLineFlight();
+    airLineFlight.setAirLineFlightId(airLineFlightId);
+    airLineFlight.setAirlineName(airlineName);
+    airLineFlight.setType(type);
+    airLineFlight.setBusinessCapacity(businessCapacity);
+    airLineFlight.setEconomyCapacity(economyCapacity);
+    airLineFlight.setOriginAirport(originAirport);
+    airLineFlight.setDestinationAirport(destinationAirport);
+    if (flightSchedules != null) {
+        List<FlightSchedule> schedules = new ArrayList<>();
+        for (FlightScheduleModel schedule : flightSchedules) {
+            schedules.add(schedule.disassemble());
+        }
+        airLineFlight.setFlightSchedules(schedules);
     }
-    public AirLineFlightModel(AirLineFlightModel airLineFlight){
-        this.airLineFlightId=airLineFlight.getAirLineFlightId();
-        this.airLineName=airLineFlight.getAirLineName();
-        this.airline=new Airline((List<Airline>) airLineFlight.getAirlines());
-    }*/
-
-public AirLineFlight disassemble(){
-        AirLineFlight airLineFlight=new AirLineFlight();
-        airLineFlight.setAirLineFlightId(airLineFlightId);
-        airLineFlight.setAirlineName(airlineName);
-        airLineFlight.setType(type);
-        airLineFlight.setBusinessCapacity(businessCapacity);
-        airLineFlight.setEconomyCapacity(economyCapacity);
-        airLineFlight.setOriginAirport(originAirport);
-        airLineFlight.setDestinationAirport(destinationAirport);
-        return airLineFlight;
-    }
+    return airLineFlight;
+}
     public AirLineFlightModel assemble(AirLineFlight airLineFlight){
         AirLineFlightModel airLineFlightModel=new AirLineFlightModel();
         airLineFlightModel.setAirLineFlightId(airLineFlight.getAirLineFlightId());
@@ -49,6 +48,13 @@ public AirLineFlight disassemble(){
         airLineFlightModel.setEconomyCapacity(airLineFlight.getEconomyCapacity());
         airLineFlightModel.setOriginAirport(airLineFlight.getOriginAirport());
         airLineFlightModel.setDestinationAirport(airLineFlight.getDestinationAirport());
+
+        List<FlightScheduleModel> flightScheduleModels = new ArrayList<>();
+        for (FlightSchedule flightSchedule : airLineFlight.getFlightSchedules()) {
+            flightScheduleModels.add(new FlightScheduleModel());
+        }
+        airLineFlightModel.setFlightSchedules(flightScheduleModels);
         return airLineFlightModel;
     }
+
 }

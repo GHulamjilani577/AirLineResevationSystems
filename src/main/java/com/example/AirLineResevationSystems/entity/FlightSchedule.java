@@ -25,11 +25,11 @@ public class FlightSchedule {
     private String departure;
     @Column(name="time")
     private String time;
-    @OneToMany
-    private List<User> user;
+    @ManyToOne
+    private User user;
     @ManyToOne
     private Airport airport;
-    @ManyToOne
+    @ManyToOne(fetch =FetchType.LAZY)
     private AirLineFlight airLineFlight;
 
     @OneToMany

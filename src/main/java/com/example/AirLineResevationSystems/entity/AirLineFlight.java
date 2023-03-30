@@ -26,17 +26,6 @@ public class AirLineFlight {
     private String destinationAirport;
 
 
-    @OneToMany
+    @OneToMany(mappedBy = "airLineFlight", cascade = CascadeType.ALL)
     private List<FlightSchedule> flightSchedules;
-   /* @ManyToOne
-    @JoinColumn(name = "air_line_Id")
-   private Airline airlines;*/
-
-
-
-
-
-
-   /* public AirLineFlight(List<AirLineFlight> airLineFlights) {
-    }*/
 }
