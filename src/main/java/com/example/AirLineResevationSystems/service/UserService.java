@@ -1,11 +1,14 @@
 package com.example.AirLineResevationSystems.service;
+import com.example.AirLineResevationSystems.entity.AirLineFlight;
 import com.example.AirLineResevationSystems.entity.User;
 import com.example.AirLineResevationSystems.model.UserModel;
 import com.example.AirLineResevationSystems.repository.UserRepository;
+import jakarta.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class UserService
@@ -50,6 +53,9 @@ public class UserService
     }
 
     public void deleteUser(Long id) {
+        User user = userRepository.findById(id).orElseThrow(() -> new EntityNotFoundException("Airline flight not found with id: " + id));
+        userRepository.delete(user);
+
     }
 }
 

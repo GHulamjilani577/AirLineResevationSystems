@@ -16,7 +16,7 @@ public class UserController {
     public UserService userService;
 
     // Add user
-    @PostMapping(name = "/save")
+    @PostMapping(value = "/save")
     public UserModel addUser(@RequestBody UserModel userModel) {
         return userService.insert(userModel);
     }

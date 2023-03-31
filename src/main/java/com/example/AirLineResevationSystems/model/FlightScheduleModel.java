@@ -13,15 +13,12 @@ public class FlightScheduleModel {
     private String flightType;
     private String departure;
     private String time;
-    private Long airLineFlightId;
 
-    public Long getAirLineFlightId() {
-        return airLineFlightId;
-    }
+    private AirLineFlightModel airLineFlightModel;
 
-    public void setAirLineFlightId(Long airLineFlightId) {
-        this.airLineFlightId = airLineFlightId;
-    }
+
+
+
     public FlightSchedule disassemble() {
         FlightSchedule flightSchedule = new FlightSchedule();
         flightSchedule.setFlightScheduleId(flightScheduleId);
@@ -31,7 +28,7 @@ public class FlightScheduleModel {
         flightSchedule.setFlightType(flightType);
         flightSchedule.setDeparture(departure);
         flightSchedule.setTime(time);
-        flightSchedule.setAirLineFlight(new AirLineFlight(airLineFlightId));
+        flightSchedule.setAirLineFlight((airLineFlightModel.disassemble()));
         return flightSchedule;
     }
     public static FlightScheduleModel assemble(FlightSchedule flightSchedule) {
@@ -43,7 +40,7 @@ public class FlightScheduleModel {
         flightScheduleModel.setFlightType(flightSchedule.getFlightType());
         flightScheduleModel.setDeparture(flightSchedule.getDeparture());
         flightScheduleModel.setTime(flightSchedule.getTime());
-        flightScheduleModel.setAirLineFlightId(flightSchedule.getAirLineFlight().getAirLineFlightId());
+        flightScheduleModel.setAirLineFlightModel(new AirLineFlightModel().assemble(flightSchedule.getAirLineFlight()));
         return flightScheduleModel;
     }
 

@@ -37,13 +37,13 @@ public class AirLineFlightService
         AirLineFlight airLineFlight = airLineFlightModel.disassemble();
         airLineFlight = airLineFlightRepository.save(airLineFlight);
 
-        if (airLineFlightModel.getFlightSchedules() != null) {
+       /* if (airLineFlightModel.getFlightSchedules() != null) {
             for (FlightScheduleModel flightScheduleModel : airLineFlightModel.getFlightSchedules()) {
                 FlightSchedule flightSchedule = flightScheduleModel.disassemble();
                 flightSchedule.setAirLineFlight(airLineFlight);
                 flightScheduleService.insert(FlightScheduleModel.assemble(flightSchedule));
             }
-        }
+        }*/
 
         return airLineFlightModel.assemble(airLineFlight);
     }

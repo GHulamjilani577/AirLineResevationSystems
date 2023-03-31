@@ -21,9 +21,11 @@ public class AirLineFlightModel
     private String economyCapacity;
     private String originAirport;
     private String destinationAirport;
-    private List<FlightScheduleModel> flightSchedules;
 
-public AirLineFlight disassemble() {
+
+
+
+    public AirLineFlight disassemble() {
     AirLineFlight airLineFlight = new AirLineFlight(airLineFlightId);
     airLineFlight.setAirLineFlightId(airLineFlightId);
     airLineFlight.setAirlineName(airlineName);

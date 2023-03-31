@@ -22,15 +22,16 @@ public class FlightSheduleController {
     public List<FlightScheduleModel> getAllFlightSchedules(){
         List<FlightSchedule> flightSchedules = flightScheduleService.findAll();
         return flightSchedules.stream().map(FlightScheduleModel::assemble).collect(Collectors.toList());
+
     }
     @GetMapping("/flight-schedules/{id}")
     public FlightScheduleModel getFlightScheduleById(@PathVariable Long id){
         FlightSchedule flightSchedule = flightScheduleService.findById(id).orElseThrow(() -> new RuntimeException("Flight schedule not found"));
         return FlightScheduleModel.assemble(flightSchedule);
     }
-    @DeleteMapping("/flight-schedules/{id}")
-    public void deleteFlightSchedule(@PathVariable Long id){
-        FlightSchedule flightSchedule = flightScheduleService.findById(id).orElseThrow(() -> new RuntimeException("Flight schedule not found"));
-        flightScheduleService.delete(flightSchedule);
+    @DeleteMapping("/{id}")
+    public void deleteFlightSchedule(@PathVariable Long id) {
+        flightScheduleService.delete(id);
     }
-}
+    }
+
