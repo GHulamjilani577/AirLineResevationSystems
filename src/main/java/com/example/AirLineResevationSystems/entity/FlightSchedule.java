@@ -29,8 +29,8 @@ public class FlightSchedule {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "airLine_flight_Id")
     private AirLineFlight airLineFlight;
-    @ManyToOne
-    private Airport airport;
+   /* @ManyToOne
+    private Airport airport;*/
     @OneToMany
     private List<Reservation>reservation ;
 

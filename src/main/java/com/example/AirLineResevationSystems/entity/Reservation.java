@@ -24,8 +24,7 @@ public class Reservation {
     private String reservationPaymentMode;
     @Column(name="reservation_BillingAddress")
     private String reservationBillingAddress;
-    @ManyToOne
-    @JoinColumn(name = "airLine_flight_Id")
-    private AirLineFlight airLineFlight;
+   @ManyToOne
+    private FlightSchedule flightSchedule;
 
 }

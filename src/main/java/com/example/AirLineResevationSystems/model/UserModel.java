@@ -1,8 +1,11 @@
 package com.example.AirLineResevationSystems.model;
 
 import com.example.AirLineResevationSystems.entity.AirLineFlight;
+import com.example.AirLineResevationSystems.entity.FlightSchedule;
 import com.example.AirLineResevationSystems.entity.User;
 import lombok.Data;
+
+import java.util.List;
 
 @Data
 public class UserModel
@@ -18,7 +21,6 @@ public class UserModel
         user.setId(id);
         user.setUserName(userName);
         user.setCNICNumber(CNICNumber);
-        user.setPhoneNumber(phoneNumber);
         return user;
     }
     public UserModel assemble(User user){

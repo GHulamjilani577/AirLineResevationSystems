@@ -35,6 +35,7 @@ public class AirLineFlightModel
     airLineFlight.setOriginAirport(originAirport);
     airLineFlight.setDestinationAirport(destinationAirport);
 
+
     return airLineFlight;
 }
     public AirLineFlightModel assemble(AirLineFlight airLineFlight){

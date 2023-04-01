@@ -1,3 +1,4 @@
+/*
 package com.example.AirLineResevationSystems.entity;
 
 import jakarta.persistence.*;
@@ -18,9 +19,11 @@ public class Airport {
     private String airportname;
     @Column(name="airPort_Location",unique = true)
     private String location;
-    /*@OneToMany
+    */
+/*@OneToMany
     @JoinColumn(name = "air_line_Id")
-    private List<Airline> airline;*/
+    private List<Airline> airline;*//*
+
 
     @OneToMany
     private List<FlightSchedule>flightSchedules;
@@ -29,3 +32,4 @@ public class Airport {
 
 
 }
+*/

@@ -26,7 +26,8 @@ public class AirLineFlight {
     private String destinationAirport;
    /* @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "flightScheduleId", referencedColumnName = "flightScheduleId")*/
-    @OneToOne(mappedBy = "airLineFlight", cascade = CascadeType.ALL, orphanRemoval = true)
+    // chaNGE KIA THA
+    @OneToMany(mappedBy = "airLineFlight", cascade = CascadeType.ALL, orphanRemoval = true)
     private FlightSchedule flightSchedule;
 
     public AirLineFlight() {

@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 public class FlightScheduleService {
@@ -31,6 +32,11 @@ public class FlightScheduleService {
 
     public Optional<FlightSchedule> findById(Long id) {
         return flightScheduleRepository.findById(id);
+    }
+
+    public  List<FlightScheduleModel> findByAirLineFlightId(Long id){
+        List<FlightScheduleModel> list=flightScheduleRepository.findFlightScheduleByAirLineFlight_AirLineFlightId(id).stream().map(FlightScheduleModel::new).collect(Collectors.toList());
+        return  list;
     }
 
     public void delete(Long id) {

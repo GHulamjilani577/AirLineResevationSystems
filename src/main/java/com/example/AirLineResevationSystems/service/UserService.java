@@ -1,7 +1,9 @@
 package com.example.AirLineResevationSystems.service;
 import com.example.AirLineResevationSystems.entity.AirLineFlight;
+import com.example.AirLineResevationSystems.entity.FlightSchedule;
 import com.example.AirLineResevationSystems.entity.User;
 import com.example.AirLineResevationSystems.model.UserModel;
+import com.example.AirLineResevationSystems.repository.FlightScheduleRepository;
 import com.example.AirLineResevationSystems.repository.UserRepository;
 import jakarta.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,6 +17,8 @@ public class UserService
 {
     @Autowired
     public UserRepository userRepository;
+    @Autowired
+    public FlightScheduleService flightScheduleService;
     public UserModel insert(UserModel userModel){
         return userModel.assemble(userRepository.save(userModel.disassemble()));
     }

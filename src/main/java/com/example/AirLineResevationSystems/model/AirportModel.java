@@ -1,3 +1,4 @@
+/*
 package com.example.AirLineResevationSystems.model;
 
 
@@ -39,3 +40,4 @@ public class AirportModel {
         return airportModel;
     }
 }
+*/

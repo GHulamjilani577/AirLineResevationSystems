@@ -1,3 +1,4 @@
+/*
 package com.example.AirLineResevationSystems.repository;
 
 import com.example.AirLineResevationSystems.entity.Airport;
@@ -20,3 +21,4 @@ public interface AirportRepository extends JpaRepository<Airport,Long> {
 
     List<Airport> findByLocation(String location);
 }
+*/

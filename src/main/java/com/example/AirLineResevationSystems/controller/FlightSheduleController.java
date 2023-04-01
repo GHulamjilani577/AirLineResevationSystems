@@ -1,7 +1,6 @@
 package com.example.AirLineResevationSystems.controller;
 
 import com.example.AirLineResevationSystems.entity.FlightSchedule;
-import com.example.AirLineResevationSystems.model.AirportModel;
 import com.example.AirLineResevationSystems.model.FlightScheduleModel;
 import com.example.AirLineResevationSystems.service.FlightScheduleService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,6 +27,10 @@ public class FlightSheduleController {
     public FlightScheduleModel getFlightScheduleById(@PathVariable Long id){
         FlightSchedule flightSchedule = flightScheduleService.findById(id).orElseThrow(() -> new RuntimeException("Flight schedule not found"));
         return FlightScheduleModel.assemble(flightSchedule);
+    }
+    @GetMapping("/flight-schedulesByAirlineId/{id}")
+    public List<FlightScheduleModel> getFlightScheduleByAirLineId(@PathVariable Long id){
+        return flightScheduleService.findByAirLineFlightId(id);
     }
     @DeleteMapping("/{id}")
     public void deleteFlightSchedule(@PathVariable Long id) {

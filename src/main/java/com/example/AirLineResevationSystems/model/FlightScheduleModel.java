@@ -16,11 +16,21 @@ public class FlightScheduleModel {
 
     private AirLineFlightModel airLineFlightModel;
 
-
+public FlightScheduleModel(FlightSchedule flightSchedule){
+    this.setFlightScheduleId(flightSchedule.getFlightScheduleId());
+    this.setFlightCode(flightSchedule.getFlightCode());
+    this.setDestination(flightSchedule.getDestination());
+    this.setFlightStatus(flightSchedule.getFlightStatus());
+    this.setFlightType(flightSchedule.getFlightType());
+    this.setDeparture(flightSchedule.getDeparture());
+    this.setTime(flightSchedule.getTime());
+    this.setAirLineFlightModel(new AirLineFlightModel().assemble(flightSchedule.getAirLineFlight()));
+}
 
 
     public FlightSchedule disassemble() {
         FlightSchedule flightSchedule = new FlightSchedule();
+
         flightSchedule.setFlightScheduleId(flightScheduleId);
         flightSchedule.setFlightCode(flightCode);
         flightSchedule.setDestination(destination);
@@ -32,7 +42,7 @@ public class FlightScheduleModel {
         return flightSchedule;
     }
     public static FlightScheduleModel assemble(FlightSchedule flightSchedule) {
-        FlightScheduleModel flightScheduleModel = new FlightScheduleModel();
+        FlightScheduleModel flightScheduleModel = new FlightScheduleModel(flightSchedule);
         flightScheduleModel.setFlightScheduleId(flightSchedule.getFlightScheduleId());
         flightScheduleModel.setFlightCode(flightSchedule.getFlightCode());
         flightScheduleModel.setDestination(flightSchedule.getDestination());
