@@ -2,6 +2,7 @@ package com.example.AirLineResevationSystems.model;
 
 import com.example.AirLineResevationSystems.entity.AirLineFlight;
 import com.example.AirLineResevationSystems.entity.FlightSchedule;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -16,7 +17,7 @@ public class FlightScheduleModel {
     private String flightType;
     private String departure;
     private String time;
-
+@JsonProperty(value ="airLineFlight")
     private AirLineFlightModel airLineFlightModel;
 
 public FlightScheduleModel(FlightSchedule flightSchedule){
