@@ -20,6 +20,7 @@ public class UserModel
         User user=new User();
         user.setId(id);
         user.setUserName(userName);
+        user.setPhoneNumber(phoneNumber);
         user.setCNICNumber(CNICNumber);
         return user;
     }

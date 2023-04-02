@@ -14,6 +14,8 @@ public class ReservationModel
     private String reservationPayment;
     private String reservationPaymentMode;
     private String reservationBillingAddress;
+    private FlightScheduleModel flightScheduleModel;
+    private UserModel userModel;
 
   public ReservationModel(){}
 
@@ -27,18 +29,22 @@ public class ReservationModel
         reservation.setReservationPayment(reservationPayment);
         reservation.setReservationPaymentMode(reservationPaymentMode);
         reservation.setReservationBillingAddress(reservationBillingAddress);
+        reservation.setFlightSchedule(flightScheduleModel.disassemble());
+        reservation.setUser(userModel.disassemble());
         return reservation;
     }
     public ReservationModel assemble(Reservation reservation){
         ReservationModel reservationModel=new ReservationModel();
-        reservationModel.setId(reservationModel.getId());
-        reservationModel.setReservationNumber(reservationModel.getReservationNumber());
-        reservationModel.setLocation(reservationModel.getLocation());
-        reservationModel.setReservationState(reservationModel.getReservationState());
-        reservationModel.setReservationCreateDate(reservationModel.getReservationCreateDate());
-        reservationModel.setReservationPayment(reservationModel.getReservationPayment());
-        reservationModel.setReservationPaymentMode(reservationModel.getReservationPaymentMode());
-        reservationModel.setReservationBillingAddress(reservationModel.getReservationBillingAddress());
+        reservationModel.setId(reservation.getId());
+        reservationModel.setReservationNumber(reservation.getReservationNumber());
+        reservationModel.setLocation(reservation.getLocation());
+        reservationModel.setReservationState(reservation.getReservationState());
+        reservationModel.setReservationCreateDate(reservation.getReservationCreateDate());
+        reservationModel.setReservationPayment(reservation.getReservationPayment());
+        reservationModel.setReservationPaymentMode(reservation.getReservationPaymentMode());
+        reservationModel.setReservationBillingAddress(reservation.getReservationBillingAddress());
+        reservationModel.setFlightScheduleModel(FlightScheduleModel.assemble(reservation.getFlightSchedule()));
+        reservationModel.setUserModel(userModel.assemble(reservation.getUser()));
         return reservationModel;
     }
 }

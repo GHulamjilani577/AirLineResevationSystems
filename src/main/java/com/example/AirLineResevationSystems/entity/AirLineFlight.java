@@ -28,7 +28,7 @@ public class AirLineFlight {
     @JoinColumn(name = "flightScheduleId", referencedColumnName = "flightScheduleId")*/
     // chaNGE KIA THA
     @OneToMany(mappedBy = "airLineFlight", cascade = CascadeType.ALL, orphanRemoval = true)
-    private FlightSchedule flightSchedule;
+    private List<FlightSchedule> flightSchedule;
 
     public AirLineFlight() {
         // Default constructor

@@ -11,15 +11,15 @@ import java.util.List;
 public class User {
     @Id
     @GeneratedValue(strategy =GenerationType.IDENTITY)
-    @Column(name="user_id",nullable = false)
+    @Column(name="user_id")
     private Long id;
-    @Column(name="user_Name",nullable = false)
+    @Column(name="user_Name")
     private String userName;
-    @Column(name="CNIC_Number",nullable = false)
+    @Column(name="CNIC_Number")
     private String CNICNumber;
-    @Column(name="Phone_number",nullable = false)
+    @Column(name="Phone_number")
     private String phoneNumber;
     @OneToMany
-    private List<FlightSchedule>flightScheduleList;
+    private List<Reservation>reservations;
 
 }

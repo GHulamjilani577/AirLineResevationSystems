@@ -8,6 +8,7 @@ import lombok.Data;
 @Table(name="reservation")
 public class Reservation {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="reservation_id")
     private int id;
     @Column(name="reservation_Number")
@@ -26,5 +27,7 @@ public class Reservation {
     private String reservationBillingAddress;
    @ManyToOne
     private FlightSchedule flightSchedule;
+   @ManyToOne
+    private User user;
 
 }
