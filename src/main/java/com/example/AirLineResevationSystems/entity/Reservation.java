@@ -11,9 +11,8 @@ public class Reservation {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="reservation_id")
     private Long id;
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "reservation_Number")
-    private int reservationNumber;
+    @Column(name = "seat_Code")
+    private int seatCode;
     @Column(name="reservation_category")
     private String reservationCategory;
     @Column(name="reservation_CreateDate")

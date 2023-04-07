@@ -7,7 +7,7 @@ import lombok.Data;
 public class ReservationModel
 {
     private Long id;
-    private int reservationNumber;
+    private int seatCode;
     private String reservationCategory;
     private String reservationCreateDate;
     private String reservationPayment;
@@ -19,7 +19,7 @@ public class ReservationModel
 
     public ReservationModel(Reservation reservation) {
         this.id = reservation.getId();
-        this.reservationNumber = reservation.getReservationNumber();
+        this.seatCode = reservation.getSeatCode();
         this.reservationCategory = reservation.getReservationCategory();
         this.reservationCreateDate = reservation.getReservationCreateDate();
         this.reservationPayment = reservation.getReservationPayment();
@@ -36,7 +36,7 @@ public ReservationModel(ReservationModel reservationModel){
 
     public Reservation disassemble(){
         Reservation reservation=new Reservation();
-        reservation.setReservationNumber(reservationNumber);
+        reservation.setSeatCode(seatCode);
         reservation.setReservationCategory(reservationCategory);
         reservation.setReservationCreateDate(reservationCreateDate);
         reservation.setReservationPayment(reservationPayment);
@@ -48,8 +48,8 @@ public ReservationModel(ReservationModel reservationModel){
     }
     public ReservationModel assemble(Reservation reservation){
         ReservationModel reservationModel=new ReservationModel(reservation);
-        reservationModel.setId(id);
-        reservationModel.setReservationNumber(reservationNumber);
+        reservationModel.setId(reservation.getId());
+        reservationModel.setSeatCode(reservation.getSeatCode());
         reservationModel.setReservationCategory(reservation.getReservationCategory());
         reservationModel.setReservationCreateDate(reservation.getReservationCreateDate());
         reservationModel.setReservationPayment(reservation.getReservationPayment());
