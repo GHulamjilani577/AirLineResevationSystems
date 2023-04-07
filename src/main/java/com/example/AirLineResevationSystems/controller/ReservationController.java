@@ -9,16 +9,46 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/reservations")
 public class ReservationController {
+
     @Autowired
     private ReservationService reservationService;
-    @PostMapping("/Create_reservation")
+    @PostMapping
+  public ReservationModel createReservation(@RequestBody ReservationModel reservationModel){
+
+        return reservationService.createReservation(reservationModel);
+    }
+    @GetMapping
+    public ResponseEntity<List<ReservationModel>> getAllReservations() {
+        List<ReservationModel> reservationModels = reservationService.getAllReservations();
+        return new ResponseEntity<>(reservationModels, HttpStatus.OK);
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<ReservationModel> getReservationById(@PathVariable Long id) {
+        ReservationModel reservationModel = reservationService.getReservationById(id);
+        return new ResponseEntity<>(reservationModel, HttpStatus.OK);
+    }
+    @DeleteMapping("/{id}")
+    public ResponseEntity<?> deleteReservation(@PathVariable Long id) {
+        reservationService.deleteReservation(id);
+        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+    }
+}
+/*@RestController
+@RequestMapping("/reservations")
+public class ReservationController {
+    @Autowired
+    private ReservationService reservationService;
+    @PostMapping("/save")
     public ReservationModel createReservation(@RequestBody ReservationModel reservationModel){
         return reservationService.insert(reservationModel);
     }
@@ -47,7 +77,7 @@ public class ReservationController {
                                                               @RequestBody ReservationModel reservationModel) {
         Optional<Reservation> reservationOptional = reservationService.getById(id);
         if (reservationOptional.isPresent()) {
-            reservationModel.setId(id);
+            reservationModel.setId((long) id);
             ReservationModel updatedReservation = reservationService.insert(reservationModel);
             return new ResponseEntity<>(updatedReservation, HttpStatus.OK);
         } else {
@@ -65,4 +95,4 @@ public class ReservationController {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
     }
-}
+}*/

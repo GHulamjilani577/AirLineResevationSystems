@@ -33,16 +33,7 @@ public class UserService
        }
            return userRepository.findAll();
        }
-    /*public User findUserByName(String userName) {
-        User user = null;
-        if (userName != null) {
-            List<User> users = (List<User>) userRepository.findByUserName(userName);
-            if (!users.isEmpty()) {
-                user = users.get(0);
-            }
-        }
-        return user;
-    }*/
+
     public User findUserByNameAndCNIC(String userName, String CNICNumber) {
         return  userRepository.findByUserNameAndCNICNumber(userName, CNICNumber);
     }

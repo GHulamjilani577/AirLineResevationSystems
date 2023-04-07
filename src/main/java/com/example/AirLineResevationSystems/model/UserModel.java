@@ -4,16 +4,22 @@ import com.example.AirLineResevationSystems.entity.AirLineFlight;
 import com.example.AirLineResevationSystems.entity.FlightSchedule;
 import com.example.AirLineResevationSystems.entity.User;
 import lombok.Data;
+import lombok.NoArgsConstructor;
+import org.springframework.stereotype.Component;
 
 import java.util.List;
 
+
+@NoArgsConstructor
 @Data
+@Component
 public class UserModel
 {
     private Long id;
     private String userName;
     private String CNICNumber;
     private String phoneNumber;
+
 
 
     public User disassemble(){
@@ -45,4 +51,5 @@ public class UserModel
         this.CNICNumber = user.getCNICNumber();
         this.phoneNumber = user.getPhoneNumber();
     }
+
 }

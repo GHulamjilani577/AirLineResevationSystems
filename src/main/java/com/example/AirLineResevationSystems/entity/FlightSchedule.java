@@ -1,6 +1,5 @@
 package com.example.AirLineResevationSystems.entity;
 
-import com.example.AirLineResevationSystems.model.FlightScheduleModel;
 import jakarta.persistence.*;
 import lombok.Data;
 
@@ -8,7 +7,7 @@ import java.util.List;
 
 @Entity
 @Data
-@Table(name="flightSchedule")
+@Table(name="flight_Schedule")
 public class FlightSchedule {
     @Id
     @GeneratedValue(strategy =GenerationType.IDENTITY)
@@ -16,21 +15,24 @@ public class FlightSchedule {
     private Long flightScheduleId;
     @Column(name="flight_Code")
     private String flightCode;
-    @Column(name="destination")
-    private String destination;
+    @Column(name="departure_Day")
+    private String departureDay;
     @Column(name="flight_status ")
     private String flightStatus;
     @Column(name="flight_Type")
     private String flightType;
-    @Column(name="departure")
-    private String departure;
+    //Add Date at the end
+    @Column(name="departure_Date")
+    private String departureDate;
     @Column(name="time")
     private String time;
+    @Column(name="businessClass_Price")
+    private String businessClassPrice;
+    @Column(name="economyClass_Price")
+    private String economyClassPrice;
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "airLine_flight_Id")
+    @JoinColumn(name = "airLineFlight_Id")
     private AirLineFlight airLineFlight;
-   /* @ManyToOne
-    private Airport airport;*/
     @OneToMany
     private List<Reservation>reservation ;
 

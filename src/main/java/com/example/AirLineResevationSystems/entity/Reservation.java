@@ -10,15 +10,15 @@ public class Reservation {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="reservation_id")
-    private int id;
-    @Column(name="reservation_Number")
-    private String reservationNumber;
-    @Column(name="reservation_Price")
-    private String location;
-    @Column(name="reservation_State")
-    private String reservationState;
+    private Long id;
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "reservation_Number")
+    private int reservationNumber;
+    @Column(name="reservation_category")
+    private String reservationCategory;
     @Column(name="reservation_CreateDate")
     private String reservationCreateDate;
+    //is py condition lagani hai k jis cteogry ko slete kry ga us k price a jai gi yha  ye agr ma na ticket bnai tu us ma khud sy a dd krwa lo ga ma
     @Column(name="reservation_Payment")
     private String reservationPayment;
     @Column(name="reservation_PaymentMode")

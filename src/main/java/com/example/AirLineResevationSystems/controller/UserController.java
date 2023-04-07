@@ -21,13 +21,11 @@ public class UserController {
         return userService.insert(userModel);
     }
 
-    // Delete user
     @DeleteMapping("/{id}")
     public void deleteUser(@PathVariable Long id) {
         userService.deleteUser(id);
     }
 
-    // Get list of users
     @GetMapping
     public List<UserModel> getUsers(@RequestParam(name = "id", required = false) Long id,
                                     @RequestParam(name = "userName", required = false) String userName) {
@@ -39,7 +37,6 @@ public class UserController {
         return userModelList;
     }
 
-    // Get user by name and CNIC
     @GetMapping("/userNameAndCNIC/{userName}/{CNICNumber}")
     public ResponseEntity<UserModel> getUserByNameAndCNIC(
             @PathVariable(value = "userName") String userName,
@@ -48,10 +45,10 @@ public class UserController {
         User user = userService.findUserByNameAndCNIC(userName, CNICNumber);
         if (user == null) {
             return ResponseEntity.notFound().build();
-        }
+        }else {
         UserModel userModel = new UserModel(user);
         return ResponseEntity.ok().body(userModel);
-    }
+    }}
 }
 
 

@@ -40,36 +40,4 @@ public class AirlineFlightController {
     }
 }
 
-/*@RestController
-@RequestMapping("/airline-flights")
-public class AirLineFlightController {
-
-    @Autowired
-    private AirLineFlightService airLineFlightService;
-
-    @PostMapping
-    public AirLineFlightModel createAirLineFlight(@RequestBody AirLineFlightModel airLineFlightModel) {
-        return airLineFlightService.insert(airLineFlightModel);
-    }
-
-  *//*  @GetMapping("/{id}")
-    public AirLineFlightModel getAirLineFlightById(@PathVariable Long id) {
-        return airLineFlightService.getById(id);
-    }
-
-    @GetMapping
-    public List<AirLineFlightModel> getAllAirLineFlights() {
-        return airLineFlightService.getAll();
-    }
-
-    @PutMapping("/{id}")
-    public AirLineFlightModel updateAirLineFlight(@PathVariable Long id, @RequestBody AirLineFlightModel airLineFlightModel) {
-        return airLineFlightService.update(id, airLineFlightModel);
-    }
-
-    @DeleteMapping("/{id}")
-    public void deleteAirLineFlight(@PathVariable Long id) {
-        airLineFlightService.delete(id);
-    }
-}*/
 

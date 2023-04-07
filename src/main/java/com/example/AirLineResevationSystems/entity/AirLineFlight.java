@@ -10,7 +10,7 @@ import java.util.List;
 public class AirLineFlight {
     @Id
     @GeneratedValue(strategy =GenerationType.IDENTITY)
-    @Column(name="airLine_flight_Id")
+    @Column(name="airLineFlight_Id")
     private Long airLineFlightId;
     @Column(name="airLine_name")
     private String airlineName;
@@ -20,13 +20,10 @@ public class AirLineFlight {
     private String businessCapacity;
     @Column(name="economyClass_capacity")
     private String economyCapacity;
-    @Column(name="originAirport")
+    @Column(name="origin_Airport")
     private String originAirport;
-    @Column(name="destinationAirport")
+    @Column(name="destination_Airport")
     private String destinationAirport;
-   /* @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "flightScheduleId", referencedColumnName = "flightScheduleId")*/
-    // chaNGE KIA THA
     @OneToMany(mappedBy = "airLineFlight", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<FlightSchedule> flightSchedule;
 

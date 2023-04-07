@@ -9,7 +9,7 @@ import java.util.Optional;
 public interface ReservationRepository extends JpaRepository<Reservation,Long> {
 
 
-    Optional<Reservation> findById(int id);
+    Optional<Reservation> findById(Long id);
 
     Reservation deleteById(Optional<Reservation> byId);
 }

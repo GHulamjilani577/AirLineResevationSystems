@@ -12,52 +12,60 @@ import lombok.NoArgsConstructor;
 public class FlightScheduleModel {
     private Long flightScheduleId;
     private String flightCode;
-    private String destination;
+    private String departureDay;
     private String flightStatus;
     private String flightType;
-    private String departure;
+    private String departureDate;
     private String time;
-@JsonProperty(value ="airLineFlight")
+    private String businessClassPrice;
+    private String economyClassPrice;
+
     private AirLineFlightModel airLineFlightModel;
 
-public FlightScheduleModel(FlightSchedule flightSchedule){
-    this.setFlightScheduleId(flightSchedule.getFlightScheduleId());
-    this.setFlightCode(flightSchedule.getFlightCode());
-    this.setDestination(flightSchedule.getDestination());
-    this.setFlightStatus(flightSchedule.getFlightStatus());
-    this.setFlightType(flightSchedule.getFlightType());
-    this.setDeparture(flightSchedule.getDeparture());
-    this.setTime(flightSchedule.getTime());
-    this.setAirLineFlightModel(new AirLineFlightModel().assemble(flightSchedule.getAirLineFlight()));
-}
 
+    public FlightScheduleModel(Long flightScheduleId, String flightCode, String departureDay, String flightStatus, String flightType, String departureDate, String time, String businessClassPrice, String economyClassPrice, AirLineFlightModel airLineFlightModel) {
+        this.flightScheduleId = flightScheduleId;
+        this.flightCode = flightCode;
+        this.departureDay = departureDay;
+        this.flightStatus = flightStatus;
+        this.flightType = flightType;
+        this.departureDate = departureDate;
+        this.time = time;
+        this.businessClassPrice = businessClassPrice;
+        this.economyClassPrice = economyClassPrice;
+        this.airLineFlightModel = airLineFlightModel;
+    }
 
+    public FlightScheduleModel(FlightSchedule flightSchedule) {
+    }
     public FlightSchedule disassemble() {
         FlightSchedule flightSchedule = new FlightSchedule();
 
         flightSchedule.setFlightScheduleId(flightScheduleId);
         flightSchedule.setFlightCode(flightCode);
-        flightSchedule.setDestination(destination);
+        flightSchedule.setDepartureDay(flightSchedule.getDepartureDay());
         flightSchedule.setFlightStatus(flightStatus);
         flightSchedule.setFlightType(flightType);
-        flightSchedule.setDeparture(departure);
+        flightSchedule.setDepartureDate(flightSchedule.getDepartureDate());
         flightSchedule.setTime(time);
+        flightSchedule.setBusinessClassPrice(businessClassPrice);
+        flightSchedule.setEconomyClassPrice(economyClassPrice);
         flightSchedule.setAirLineFlight((airLineFlightModel.disassemble()));
         return flightSchedule;
     }
-    public static FlightScheduleModel assemble(FlightSchedule flightSchedule) {
+    public FlightScheduleModel assemble(FlightSchedule flightSchedule) {
         FlightScheduleModel flightScheduleModel = new FlightScheduleModel(flightSchedule);
         flightScheduleModel.setFlightScheduleId(flightSchedule.getFlightScheduleId());
         flightScheduleModel.setFlightCode(flightSchedule.getFlightCode());
-        flightScheduleModel.setDestination(flightSchedule.getDestination());
+        flightScheduleModel.setDepartureDay(flightSchedule.getDepartureDay());
         flightScheduleModel.setFlightStatus(flightSchedule.getFlightStatus());
         flightScheduleModel.setFlightType(flightSchedule.getFlightType());
-        flightScheduleModel.setDeparture(flightSchedule.getDeparture());
+        flightScheduleModel.setDepartureDate(flightSchedule.getDepartureDate());
         flightScheduleModel.setTime(flightSchedule.getTime());
+        flightScheduleModel.setBusinessClassPrice(flightSchedule.getBusinessClassPrice());
+        flightScheduleModel.setEconomyClassPrice(flightSchedule.getEconomyClassPrice());
         flightScheduleModel.setAirLineFlightModel(new AirLineFlightModel().assemble(flightSchedule.getAirLineFlight()));
         return flightScheduleModel;
     }
-
-
 
 }

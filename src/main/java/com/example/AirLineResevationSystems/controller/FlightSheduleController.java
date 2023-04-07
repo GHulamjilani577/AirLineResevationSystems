@@ -1,40 +1,51 @@
 package com.example.AirLineResevationSystems.controller;
 
-import com.example.AirLineResevationSystems.entity.FlightSchedule;
+import com.example.AirLineResevationSystems.model.AirLineFlightModel;
 import com.example.AirLineResevationSystems.model.FlightScheduleModel;
 import com.example.AirLineResevationSystems.service.FlightScheduleService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 @RestController
+@RequestMapping("/flight-schedules")
 public class FlightSheduleController {
+
     @Autowired
-    public FlightScheduleService flightScheduleService;
-    @PostMapping("/add-flightSchedule")
-    public FlightScheduleModel addFlights(@RequestBody FlightScheduleModel flightScheduleModel){
-        return flightScheduleService.insert(flightScheduleModel);
+    private FlightScheduleService flightScheduleService;
+
+    @PostMapping
+    public ResponseEntity<FlightScheduleModel> insert(@RequestBody FlightScheduleModel flightScheduleModel) {
+        FlightScheduleModel insertedFlightScheduleModel = flightScheduleService.insert(flightScheduleModel);
+        return ResponseEntity.status(HttpStatus.CREATED).body(insertedFlightScheduleModel);
     }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> delete(@PathVariable Long id) {
+        flightScheduleService.delete(id);
+        return ResponseEntity.noContent().build();
+    }
+
+
     @GetMapping("/flight-schedules")
     public List<FlightScheduleModel> getAllFlightSchedules(){
-        List<FlightSchedule> flightSchedules = flightScheduleService.findAll();
-        return flightSchedules.stream().map(FlightScheduleModel::assemble).collect(Collectors.toList());
+
+        return flightScheduleService.findAll();
 
     }
+
     @GetMapping("/flight-schedules/{id}")
-    public FlightScheduleModel getFlightScheduleById(@PathVariable Long id){
-        FlightSchedule flightSchedule = flightScheduleService.findById(id).orElseThrow(() -> new RuntimeException("Flight schedule not found"));
-        return FlightScheduleModel.assemble(flightSchedule);
+    public AirLineFlightModel getFlightScheduleById(@PathVariable Long id){
+        return flightScheduleService.findById(id);
     }
+
     @GetMapping("/flight-schedulesByAirlineId/{id}")
     public List<FlightScheduleModel> getFlightScheduleByAirLineId(@PathVariable Long id){
         return flightScheduleService.findByAirLineFlightId(id);
     }
-    @DeleteMapping("/{id}")
-    public void deleteFlightSchedule(@PathVariable Long id) {
-        flightScheduleService.delete(id);
     }
-    }
+
 

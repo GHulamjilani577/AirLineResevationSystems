@@ -1,7 +1,7 @@
 package com.example.AirLineResevationSystems.service;
 import com.example.AirLineResevationSystems.entity.AirLineFlight;
 import com.example.AirLineResevationSystems.entity.FlightSchedule;
-import com.example.AirLineResevationSystems.entity.User;
+import com.example.AirLineResevationSystems.model.AirLineFlightModel;
 import com.example.AirLineResevationSystems.model.FlightScheduleModel;
 import com.example.AirLineResevationSystems.repository.AirLineFlightRepository;
 import com.example.AirLineResevationSystems.repository.FlightScheduleRepository;
@@ -15,33 +15,54 @@ import java.util.stream.Collectors;
 
 @Service
 public class FlightScheduleService {
+
     @Autowired
-    public FlightScheduleRepository flightScheduleRepository;
+    private FlightScheduleRepository flightScheduleRepository;
+
     @Autowired
-    AirLineFlightRepository airLineFlightRepository;
-    public FlightScheduleModel insert(FlightScheduleModel flightScheduleModel){
-        AirLineFlight airLineFlight =airLineFlightRepository.findById(flightScheduleModel.getAirLineFlightModel().getAirLineFlightId()).get();
-        FlightSchedule flightSchedule=new FlightSchedule();
+    private AirLineFlightRepository airLineFlightRepository;
+    public FlightScheduleModel insert(FlightScheduleModel flightScheduleModel) {
+        FlightSchedule flightSchedule = flightScheduleModel.disassemble();
+        AirLineFlight airLineFlight = airLineFlightRepository.findById(flightSchedule.getAirLineFlight().getAirLineFlightId())
+                .orElseThrow(() -> new RuntimeException("Airline flight not found"));
         flightSchedule.setAirLineFlight(airLineFlight);
-        return flightScheduleModel.assemble(flightScheduleRepository.save(flightScheduleModel.disassemble()));
+        FlightSchedule savedFlightSchedule = flightScheduleRepository.save(flightSchedule);
+        return new FlightScheduleModel().assemble(savedFlightSchedule);
     }
 
-    public List<FlightSchedule> findAll() {
+    /*public List<FlightSchedule> findAll() {
         return flightScheduleRepository.findAll();
-    }
+    }*/
 
-    public Optional<FlightSchedule> findById(Long id) {
+   /* public Optional<FlightSchedule> findById(Long id) {
         return flightScheduleRepository.findById(id);
-    }
-
-    public  List<FlightScheduleModel> findByAirLineFlightId(Long id){
-        List<FlightScheduleModel> list=flightScheduleRepository.findFlightScheduleByAirLineFlight_AirLineFlightId(id).stream().map(FlightScheduleModel::new).collect(Collectors.toList());
-        return  list;
-    }
-
-    public void delete(Long id) {
+    }*/
+    public AirLineFlightModel findById(Long id) {
         FlightSchedule flightSchedule = flightScheduleRepository.findById(id).orElseThrow(() -> new EntityNotFoundException("Airline flight not found with id: " + id));
+        return new FlightScheduleModel().assemble(flightSchedule).getAirLineFlightModel();
+    }
+    /*public AirLineFlightModel getById(Long id) {
+        AirLineFlight airLineFlight = airLineFlightRepository.findById(id).orElseThrow(() -> new EntityNotFoundException("Airline flight not found with id: " + id));
+        return new AirLineFlightModel().assemble(airLineFlight);
+    }*/
+    public List<FlightScheduleModel> findAll() {
+        List<FlightSchedule> flightSchedules = flightScheduleRepository.findAll();
+        return flightSchedules.stream().map(flightSchedule -> new FlightScheduleModel().assemble(flightSchedule)).collect(Collectors.toList());
+    }
+  /*  public List<AirLineFlightModel> getAll() {
+        List<AirLineFlight> airLineFlights = airLineFlightRepository.findAll();
+        return airLineFlights.stream().map(airLineFlight -> new AirLineFlightModel().assemble(airLineFlight)).collect(Collectors.toList());
+    }*/
+    public void delete(Long id) {
+
+        FlightSchedule flightSchedule = flightScheduleRepository.findById(id).orElseThrow(() -> new RuntimeException("Flight schedule not found"));
         flightScheduleRepository.delete(flightSchedule);
+    }
+    public  List<FlightScheduleModel> findByAirLineFlightId(Long id){
+        List<FlightScheduleModel> list=flightScheduleRepository.findFlightScheduleByAirLineFlight_AirLineFlightId(id)
+                .stream().map(FlightScheduleModel::new).collect(Collectors.toList());
+
+        return  list;
     }
 
 }

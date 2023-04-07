@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Data
-@JsonIgnoreProperties("flightSchedule")
+/*@JsonIgnoreProperties("flightSchedule")*/
 public class AirLineFlightModel
 {
     private Long airLineFlightId;
@@ -34,8 +34,6 @@ public class AirLineFlightModel
     airLineFlight.setEconomyCapacity(economyCapacity);
     airLineFlight.setOriginAirport(originAirport);
     airLineFlight.setDestinationAirport(destinationAirport);
-
-
     return airLineFlight;
 }
     public AirLineFlightModel assemble(AirLineFlight airLineFlight){
