@@ -19,7 +19,6 @@ public class FlightScheduleModel {
     private String time;
     private String businessClassPrice;
     private String economyClassPrice;
-
     private AirLineFlightModel airLineFlightModel;
 
 

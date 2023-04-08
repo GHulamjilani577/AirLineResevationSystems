@@ -30,29 +30,16 @@ public class FlightScheduleService {
         return new FlightScheduleModel().assemble(savedFlightSchedule);
     }
 
-    /*public List<FlightSchedule> findAll() {
-        return flightScheduleRepository.findAll();
-    }*/
-
-   /* public Optional<FlightSchedule> findById(Long id) {
-        return flightScheduleRepository.findById(id);
-    }*/
     public AirLineFlightModel findById(Long id) {
         FlightSchedule flightSchedule = flightScheduleRepository.findById(id).orElseThrow(() -> new EntityNotFoundException("Airline flight not found with id: " + id));
         return new FlightScheduleModel().assemble(flightSchedule).getAirLineFlightModel();
     }
-    /*public AirLineFlightModel getById(Long id) {
-        AirLineFlight airLineFlight = airLineFlightRepository.findById(id).orElseThrow(() -> new EntityNotFoundException("Airline flight not found with id: " + id));
-        return new AirLineFlightModel().assemble(airLineFlight);
-    }*/
+
     public List<FlightScheduleModel> findAll() {
         List<FlightSchedule> flightSchedules = flightScheduleRepository.findAll();
         return flightSchedules.stream().map(flightSchedule -> new FlightScheduleModel().assemble(flightSchedule)).collect(Collectors.toList());
     }
-  /*  public List<AirLineFlightModel> getAll() {
-        List<AirLineFlight> airLineFlights = airLineFlightRepository.findAll();
-        return airLineFlights.stream().map(airLineFlight -> new AirLineFlightModel().assemble(airLineFlight)).collect(Collectors.toList());
-    }*/
+
     public void delete(Long id) {
 
         FlightSchedule flightSchedule = flightScheduleRepository.findById(id).orElseThrow(() -> new RuntimeException("Flight schedule not found"));

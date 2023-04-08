@@ -13,7 +13,7 @@ public class FlightSchedule {
     @GeneratedValue(strategy =GenerationType.IDENTITY)
     @Column(name="flightSchedule_Id")
     private Long flightScheduleId;
-    @Column(name="flight_Code")
+    @Column(name="flight_Code",unique = true)
     private String flightCode;
     @Column(name="departure_Day")
     private String departureDay;

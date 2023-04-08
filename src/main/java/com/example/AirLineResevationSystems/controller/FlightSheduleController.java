@@ -17,7 +17,7 @@ public class FlightSheduleController {
     @Autowired
     private FlightScheduleService flightScheduleService;
 
-    @PostMapping
+    @PostMapping("/create_schedules")
     public ResponseEntity<FlightScheduleModel> insert(@RequestBody FlightScheduleModel flightScheduleModel) {
         FlightScheduleModel insertedFlightScheduleModel = flightScheduleService.insert(flightScheduleModel);
         return ResponseEntity.status(HttpStatus.CREATED).body(insertedFlightScheduleModel);

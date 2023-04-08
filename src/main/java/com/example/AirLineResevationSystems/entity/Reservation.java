@@ -3,6 +3,8 @@ package com.example.AirLineResevationSystems.entity;
 import jakarta.persistence.*;
 import lombok.Data;
 
+import java.util.Random;
+
 @Entity
 @Data
 @Table(name="reservation")
@@ -12,7 +14,12 @@ public class Reservation {
     @Column(name="reservation_id")
     private Long id;
     @Column(name = "seat_Code")
-    private int seatCode;
+    private int seatCode = generateSeatCode();
+
+    private int generateSeatCode() {
+        Random rand = new Random();
+        return rand.nextInt(9000) + 1000;
+    }
     @Column(name="reservation_category")
     private String reservationCategory;
     @Column(name="reservation_CreateDate")

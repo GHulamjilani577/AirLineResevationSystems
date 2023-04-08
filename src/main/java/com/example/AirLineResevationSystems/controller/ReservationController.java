@@ -21,7 +21,7 @@ public class ReservationController {
 
     @Autowired
     private ReservationService reservationService;
-    @PostMapping
+    @PostMapping("/create_Reservation")
   public ReservationModel createReservation(@RequestBody ReservationModel reservationModel){
 
         return reservationService.createReservation(reservationModel);
@@ -43,56 +43,3 @@ public class ReservationController {
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 }
-/*@RestController
-@RequestMapping("/reservations")
-public class ReservationController {
-    @Autowired
-    private ReservationService reservationService;
-    @PostMapping("/save")
-    public ReservationModel createReservation(@RequestBody ReservationModel reservationModel){
-        return reservationService.insert(reservationModel);
-    }
-    @GetMapping("/{id}")
-    public ResponseEntity<ReservationModel> getReservation(@PathVariable("id") int id) {
-        Optional<Reservation> reservationOptional = reservationService.getById(id);
-        if (reservationOptional.isPresent()) {
-            ReservationModel reservationModel = new ReservationModel().assemble(reservationOptional.get());
-            return new ResponseEntity<>(reservationModel, HttpStatus.OK);
-        } else {
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-        }
-    }
-
-    @GetMapping
-    public ResponseEntity<List<ReservationModel>> getAllReservations() {
-        List<Reservation> reservations = reservationService.getAll();
-        List<ReservationModel> reservationModels = reservations.stream()
-                .map(reservation -> new ReservationModel().assemble(reservation))
-                .collect(Collectors.toList());
-        return new ResponseEntity<>(reservationModels, HttpStatus.OK);
-    }
-
-    @PutMapping("/{id}")
-    public ResponseEntity<ReservationModel> updateReservation(@PathVariable("id") int id,
-                                                              @RequestBody ReservationModel reservationModel) {
-        Optional<Reservation> reservationOptional = reservationService.getById(id);
-        if (reservationOptional.isPresent()) {
-            reservationModel.setId((long) id);
-            ReservationModel updatedReservation = reservationService.insert(reservationModel);
-            return new ResponseEntity<>(updatedReservation, HttpStatus.OK);
-        } else {
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-        }
-    }
-
-    @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteReservation(@PathVariable("id") int id) {
-        Optional<Reservation> reservationOptional = reservationService.getById(id);
-        if (reservationOptional.isPresent()) {
-            reservationService.deleteById(id);
-            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-        } else {
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-        }
-    }
-}*/
